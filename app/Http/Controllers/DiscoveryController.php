@@ -1,0 +1,53 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Story;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+
+class DiscoveryController extends Controller
+{
+    public function index(Request $request): View
+    {
+        $genres = Story::query()
+            ->where('status', 'published')
+            ->whereNotNull('genre')
+            ->where('genre', '<>', '')
+            ->distinct()
+            ->orderBy('genre')
+            ->pluck('genre');
+
+        $sort = $request->query('sort', 'latest');
+        if (!in_array($sort, ['latest', 'popular', 'top_rated', 'title'], true)) {
+            $sort = 'latest';
+        }
+
+        $storiesQuery = Story::query()
+            ->with('user')
+            ->withCount('likes')
+            ->withAvg('ratings', 'rating')
+            ->where('status', 'published')
+            ->when($request->filled('q'), function ($query) use ($request) {
+                $keyword = trim($request->string('q')->toString());
+                $query->where(function ($subQuery) use ($keyword) {
+                    $subQuery->where('title', 'like', "%{$keyword}%")
+                        ->orWhere('author', 'like', "%{$keyword}%")
+                        ->orWhere('genre', 'like', "%{$keyword}%")
+                        ->orWhereHas('user', fn ($userQuery) => $userQuery->where('name', 'like', "%{$keyword}%"));
+                });
+            })
+            ->when($request->filled('genre'), fn ($query) => $query->where('genre', $request->query('genre')));
+
+        match ($sort) {
+            'popular' => $storiesQuery->orderByDesc('likes_count')->latest(),
+            'top_rated' => $storiesQuery->orderByDesc('ratings_avg_rating')->orderByDesc('likes_count'),
+            'title' => $storiesQuery->orderBy('title'),
+            default => $storiesQuery->latest(),
+        };
+
+        $stories = $storiesQuery->paginate(12)->withQueryString();
+
+        return view('stories.index', compact('stories', 'genres', 'sort'));
+    }
+}

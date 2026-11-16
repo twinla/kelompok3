@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Story;
+use App\Models\StoryChapter;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -12,30 +13,6 @@ use Illuminate\View\View;
 
 class StoryController extends Controller
 {
-    // Pencarian berdasarkan judul, nama pena, genre, atau nama akun penulis.
-    public function index(Request $request): View
-    {
-        $stories = Story::query()
-            ->with('user')
-            ->where('status', 'published')
-            ->when($request->filled('q'), function ($query) use ($request) {
-                $keyword = trim($request->string('q')->toString());
-
-                $query->where(function ($subQuery) use ($keyword) {
-                    $subQuery->where('title', 'like', "%{$keyword}%")
-                        ->orWhere('author', 'like', "%{$keyword}%")
-                        ->orWhere('genre', 'like', "%{$keyword}%")
-                        ->orWhereHas('user', function ($userQuery) use ($keyword) {
-                            $userQuery->where('name', 'like', "%{$keyword}%");
-                        });
-                });
-            })
-            ->latest()
-            ->get();
-
-        return view('stories.index', compact('stories'));
-    }
-
     public function random(): RedirectResponse
     {
         $story = Story::where('status', 'published')->inRandomOrder()->first();
@@ -60,13 +37,14 @@ class StoryController extends Controller
             'author' => ['required', 'string', 'max:100'],
             'genre' => ['required', 'string', 'max:80'],
             'synopsis' => ['required', 'string', 'max:2000'],
-            'content' => ['required', 'string', 'min:50'],
+            'content' => ['required', 'string', 'min:20'],
             'status' => ['required', 'in:draft,published'],
             'cover' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
         ]);
 
         $validated['slug'] = Str::slug($validated['title']) . '-' . Str::lower(Str::random(5));
         $validated['user_id'] = $request->user()->id;
+        $initialContent = $validated['content'];
 
         if ($request->hasFile('cover')) {
             $validated['cover'] = $request->file('cover')->store('covers', 'public');
@@ -74,23 +52,18 @@ class StoryController extends Controller
 
         $story = Story::create($validated);
 
+        // Isi pada form Create Story otomatis menjadi Chapter 1.
+        StoryChapter::create([
+            'story_id' => $story->id,
+            'chapter_number' => 1,
+            'title' => 'Chapter 1',
+            'content' => $initialContent,
+            'status' => $story->status,
+            'published_at' => $story->status === 'published' ? now() : null,
+        ]);
+
         return redirect()->route('stories.show', $story)
-            ->with('success', 'Novel berhasil ditambahkan!');
-    }
-
-    public function show(Story $story): View
-    {
-        $isOwner = auth()->check()
-            && $story->user_id !== null
-            && (int) $story->user_id === (int) auth()->id();
-
-        if ($story->status !== 'published' && !$isOwner) {
-            abort(404);
-        }
-
-        $story->load(['characters', 'user']);
-
-        return view('stories.show', compact('story'));
+            ->with('success', 'Novel dan Chapter 1 berhasil dibuat.');
     }
 
     public function edit(Story $story): View
@@ -108,7 +81,7 @@ class StoryController extends Controller
             'author' => ['required', 'string', 'max:100'],
             'genre' => ['required', 'string', 'max:80'],
             'synopsis' => ['required', 'string', 'max:2000'],
-            'content' => ['required', 'string', 'min:50'],
+            'content' => ['required', 'string', 'min:20'],
             'status' => ['required', 'in:draft,published'],
             'cover' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
         ]);
@@ -123,8 +96,28 @@ class StoryController extends Controller
         $validated['slug'] = Str::slug($validated['title']) . '-' . Str::lower(Str::random(5));
         $story->update($validated);
 
+        // Form Edit Story tetap mengelola isi Chapter 1; chapter berikutnya dikelola terpisah.
+        $firstChapter = $story->chapters()->where('chapter_number', 1)->first();
+        $chapterData = [
+            'title' => $firstChapter?->title ?: 'Chapter 1',
+            'content' => $validated['content'],
+            'status' => $story->status,
+            'published_at' => $story->status === 'published'
+                ? ($firstChapter?->published_at ?? now())
+                : null,
+        ];
+
+        if ($firstChapter) {
+            $firstChapter->update($chapterData);
+        } else {
+            $story->chapters()->create([
+                ...$chapterData,
+                'chapter_number' => 1,
+            ]);
+        }
+
         return redirect()->route('stories.show', $story)
-            ->with('success', 'Novel berhasil diperbarui!');
+            ->with('success', 'Novel dan Chapter 1 berhasil diperbarui.');
     }
 
     public function destroy(Story $story): RedirectResponse
@@ -143,7 +136,6 @@ class StoryController extends Controller
 
         $story->delete();
 
-        return redirect()->route('stories.index')
-            ->with('success', 'Novel berhasil dihapus!');
+        return redirect()->route('stories.index')->with('success', 'Novel berhasil dihapus.');
     }
 }
