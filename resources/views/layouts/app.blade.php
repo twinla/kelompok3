@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
+    {{-- Loaded after Vite and page styles so pagination stays styled even with a stale build manifest. --}}
+    <link rel="stylesheet" href="{{ asset('css/talepad-pagination.css') }}?v=4">
 </head>
 <body>
     <header class="tp-site-header">
@@ -82,9 +84,7 @@
 
     <main>
         <div class="container">
-            @if(!request()->routeIs('stories.index'))
-                <x-flash-message />
-            @endif
+            <x-flash-message />
             @yield('content')
         </div>
     </main>

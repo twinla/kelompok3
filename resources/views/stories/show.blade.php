@@ -5,9 +5,6 @@
 @section('content')
 <section class="reader-page tp-feature-page">
     <a href="{{ route('stories.index') }}" class="back-link">← Back to Discover</a>
-    @if(session('success')) <div class="tp-flash tp-flash-success">{{ session('success') }}</div> @endif
-    @if(session('error')) <div class="tp-flash tp-flash-error">{{ session('error') }}</div> @endif
-
     <div class="reader-header">
         <div class="reader-cover">
             @if($story->cover) <img src="{{ asset('storage/' . $story->cover) }}" alt="{{ $story->title }}">
@@ -119,7 +116,7 @@
                 </article>
             @empty <p class="tp-empty-note">No comments yet. Be the first to share your thoughts.</p> @endforelse
         </div>
-        {{ $comments->links() }}
+        @include('partials.pagination', ['paginator' => $comments])
     </section>
 </section>
 

@@ -9,6 +9,6 @@
             <article class="story-card"><a class="cover-link" href="{{ route('stories.show', $story) }}">@if($story->cover)<img class="story-cover" src="{{ asset('storage/' . $story->cover) }}" alt="{{ $story->title }}">@else<div class="cover-placeholder"><span>{{ $story->genre }}</span><strong>{{ $story->title }}</strong><small>TALEPAD EDITION</small></div>@endif</a><div class="story-info"><span class="genre">{{ $story->genre }}</span><h3><a href="{{ route('stories.show', $story) }}">{{ $story->title }}</a></h3><p>by {{ $story->author }}</p><div class="story-bottom"><a href="{{ route('stories.show', $story) }}">Open Story →</a><form action="{{ route('library.destroy', $entry) }}" method="POST">@csrf @method('DELETE')<button type="submit" class="tp-text-button">Remove</button></form></div></div></article>
         @empty <div class="empty-state"><h3>This shelf is empty.</h3><p>Open a novel and add it to {{ $shelf === 'saved' ? 'Saved Books' : 'Want to Read' }}.</p><a href="{{ route('stories.index') }}" class="btn btn-dark">Explore Stories</a></div> @endforelse
     </div>
-    {{ $entries->links() }}
+    @include('partials.pagination', ['paginator' => $entries])
 </section>
 @endsection

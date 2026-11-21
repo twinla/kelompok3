@@ -46,8 +46,17 @@ class DiscoveryController extends Controller
             default => $storiesQuery->latest(),
         };
 
-        $stories = $storiesQuery->paginate(12)->withQueryString();
+        // Keep page sizes predictable and prevent unbounded per-page requests.
+        $requestedPerPage = $request->query('per_page', 10);
+        $perPage = is_scalar($requestedPerPage)
+            ? filter_var((string) $requestedPerPage, FILTER_VALIDATE_INT)
+            : false;
+        if (!in_array($perPage, [5, 10, 20, 40], true)) {
+            $perPage = 10;
+        }
 
-        return view('stories.index', compact('stories', 'genres', 'sort'));
+        $stories = $storiesQuery->paginate($perPage)->withQueryString();
+
+        return view('stories.index', compact('stories', 'genres', 'sort', 'perPage'));
     }
 }

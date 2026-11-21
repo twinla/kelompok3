@@ -7,13 +7,11 @@
     <div class="tp-top-search">
         <form action="{{ route('stories.index') }}" method="GET" class="search-form">
             <input type="search" name="q" placeholder="Search titles, authors, or genres..." value="{{ request('q') }}" aria-label="Search stories">
+            <input type="hidden" name="per_page" value="{{ $perPage }}">
             <button type="submit">Search →</button>
         </form>
     </div>
 </section>
-
-@if(session('success')) <div class="tp-flash tp-flash-success">{{ session('success') }}</div> @endif
-@if(session('error')) <div class="tp-flash tp-flash-error">{{ session('error') }}</div> @endif
 
 <section class="hero">
     <div class="hero-content">
@@ -38,6 +36,7 @@
 
     <form action="{{ route('stories.index') }}" method="GET" class="tp-discovery-filters">
         <input type="search" name="q" value="{{ request('q') }}" placeholder="Search title, author, genre..." aria-label="Search">
+        <input type="hidden" name="per_page" value="{{ $perPage }}">
         <select name="genre" aria-label="Filter genre">
             <option value="">All genres</option>
             @foreach($genres as $genreOption)
@@ -73,6 +72,33 @@
             <div class="empty-state"><div class="empty-icon">✦</div><h3>No stories found.</h3><p>Try changing the keyword, genre, or sorting option.</p></div>
         @endforelse
     </div>
-    <div class="tp-pagination">{{ $stories->links() }}</div>
+    <section class="tp-discovery-pagination" aria-label="Story list pagination">
+        <div class="tp-discovery-pagination-top">
+            <p class="tp-pagination-summary">
+                Showing <strong>{{ $stories->firstItem() ?? 0 }}–{{ $stories->lastItem() ?? 0 }}</strong>
+                of <strong>{{ $stories->total() }}</strong> stories
+            </p>
+
+            <form action="{{ route('stories.index') }}" method="GET" class="tp-per-page-control">
+                @if (request()->filled('q'))
+                    <input type="hidden" name="q" value="{{ request('q') }}">
+                @endif
+                @if (request()->filled('genre'))
+                    <input type="hidden" name="genre" value="{{ request('genre') }}">
+                @endif
+                <input type="hidden" name="sort" value="{{ $sort }}">
+                <label for="tp-per-page">Show</label>
+                <select id="tp-per-page" name="per_page" aria-label="Stories per page">
+                    @foreach ([5, 10, 20, 40] as $pageSize)
+                        <option value="{{ $pageSize }}" @selected($perPage === $pageSize)>{{ $pageSize }}</option>
+                    @endforeach
+                </select>
+                <span>per page</span>
+                <button type="submit" class="tp-per-page-apply">Apply</button>
+            </form>
+        </div>
+
+        @include('partials.pagination', ['paginator' => $stories])
+    </section>
 </section>
 @endsection

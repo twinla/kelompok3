@@ -51,6 +51,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target.value) window.location.assign(event.target.value);
     });
 
+    // Submit simple GET controls when their selected value changes.
+    document.querySelectorAll('[data-submit-on-change]').forEach((control) => {
+        control.addEventListener('change', () => {
+            control.form?.requestSubmit();
+        });
+    });
+
     // Show/hide password controls used on registration.
     document.querySelectorAll('.tp-password-toggle[data-target]').forEach((button) => {
         button.addEventListener('click', () => {
