@@ -123,18 +123,4 @@
     </section>
 </section>
 
-@push('scripts')
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const search = document.getElementById('chapter-search');
-    const rows = document.querySelectorAll('.tp-chapter-row');
-    const jump = document.getElementById('chapter-jump');
-    if (search) search.addEventListener('input', function () {
-        const term = this.value.toLowerCase().trim();
-        rows.forEach(row => row.hidden = !row.dataset.chapterSearch.includes(term));
-    });
-    if (jump) jump.addEventListener('change', function () { if (this.value) window.location.href = this.value; });
-});
-</script>
-@endpush
 @endsection

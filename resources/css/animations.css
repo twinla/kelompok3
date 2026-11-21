@@ -1,0 +1,7 @@
+.tp-reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s var(--tp-ease), transform .65s var(--tp-ease); }
+.tp-reveal.is-visible { opacity: 1; transform: translateY(0); }
+.story-card, .tp-panel, .tp-button, .btn { will-change: auto; }
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    .tp-reveal { opacity: 1; transform: none; }
+}

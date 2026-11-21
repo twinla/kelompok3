@@ -1,9 +1,95 @@
-@import 'tailwindcss';
+@import './tokens.css';
+@import './base.css';
+@import './components.css';
+@import './pages.css';
+@import './responsive.css';
+@import './animations.css';
+@import './visual-overrides.css';
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+/* =========================================
+   TALEPAD — DARK MODE BACKGROUND FIX
+   ========================================= */
+
+html[data-theme="dark"] {
+    color-scheme: dark;
+    min-height: 100%;
+    background: #191d1a !important;
+}
+
+html[data-theme="dark"] body {
+    min-height: 100vh !important;
+    background-color: #191d1a !important;
+    background-image:
+        radial-gradient(circle at 5% 8%, rgba(120, 145, 125, 0.13) 0%, transparent 32%),
+        radial-gradient(circle at 95% 15%, rgba(75, 105, 85, 0.18) 0%, transparent 35%),
+        radial-gradient(circle at 85% 90%, rgba(120, 63, 74, 0.12) 0%, transparent 35%),
+        radial-gradient(circle at 15% 85%, rgba(100, 85, 65, 0.10) 0%, transparent 30%),
+        linear-gradient(135deg, #191d1a 0%, #202720 50%, #1b211d 100%) !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+
+/* Pastikan wrapper utama tidak menutupi background */
+html[data-theme="dark"] #app,
+html[data-theme="dark"] .app,
+html[data-theme="dark"] .app-layout,
+html[data-theme="dark"] .app-shell,
+html[data-theme="dark"] .site-wrapper,
+html[data-theme="dark"] .page-wrapper,
+html[data-theme="dark"] .main-wrapper,
+html[data-theme="dark"] .content-wrapper,
+html[data-theme="dark"] main,
+html[data-theme="dark"] main > .container {
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+/* Area konten dan komponen */
+html[data-theme="dark"] .tp-site-header,
+html[data-theme="dark"] .tp-navbar,
+html[data-theme="dark"] .tp-footer,
+html[data-theme="dark"] .tp-bottom-nav {
+    background-color: #202720 !important;
+    color: #eeeae1 !important;
+}
+
+html[data-theme="dark"] .tp-mobile-panel,
+html[data-theme="dark"] .tp-dropdown-menu {
+    background-color: #252e28 !important;
+    color: #eeeae1 !important;
+}
+
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .tp-card,
+html[data-theme="dark"] .story-card,
+html[data-theme="dark"] .book-card,
+html[data-theme="dark"] .modal {
+    background-color: #252e28 !important;
+    color: #eeeae1 !important;
+    border-color: rgba(238, 234, 225, 0.12) !important;
+}
+
+html[data-theme="dark"] input,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] select {
+    background-color: #252e28 !important;
+    color: #eeeae1 !important;
+    border-color: rgba(238, 234, 225, 0.2) !important;
+}
+
+html[data-theme="dark"] a,
+html[data-theme="dark"] p,
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4 {
+    color: inherit;
+}
+
+@media (max-width: 768px) {
+    html[data-theme="dark"] body {
+        background-attachment: scroll !important;
+    }
 }
