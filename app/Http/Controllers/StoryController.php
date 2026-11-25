@@ -19,7 +19,7 @@ class StoryController extends Controller
 
         if (!$story) {
             return redirect()->route('stories.index')
-                ->with('error', 'Belum ada novel yang diterbitkan.');
+                ->with('error', 'Belum ada cerita yang diterbitkan.');
         }
 
         return redirect()->route('stories.show', $story);
@@ -56,14 +56,14 @@ class StoryController extends Controller
         StoryChapter::create([
             'story_id' => $story->id,
             'chapter_number' => 1,
-            'title' => 'Chapter 1',
+            'title' => 'Bab 1',
             'content' => $initialContent,
             'status' => $story->status,
             'published_at' => $story->status === 'published' ? now() : null,
         ]);
 
         return redirect()->route('stories.show', $story)
-            ->with('success', 'Novel dan Chapter 1 berhasil dibuat.');
+            ->with('success', 'Cerita dan Bab 1 berhasil dibuat.');
     }
 
     public function edit(Story $story): View
@@ -99,7 +99,7 @@ class StoryController extends Controller
         // Form Edit Story tetap mengelola isi Chapter 1; chapter berikutnya dikelola terpisah.
         $firstChapter = $story->chapters()->where('chapter_number', 1)->first();
         $chapterData = [
-            'title' => $firstChapter?->title ?: 'Chapter 1',
+            'title' => $firstChapter?->title === 'Chapter 1' ? 'Bab 1' : ($firstChapter?->title ?: 'Bab 1'),
             'content' => $validated['content'],
             'status' => $story->status,
             'published_at' => $story->status === 'published'
@@ -117,7 +117,7 @@ class StoryController extends Controller
         }
 
         return redirect()->route('stories.show', $story)
-            ->with('success', 'Novel dan Chapter 1 berhasil diperbarui.');
+            ->with('success', 'Cerita dan Bab 1 berhasil diperbarui.');
     }
 
     public function destroy(Story $story): RedirectResponse
@@ -136,6 +136,6 @@ class StoryController extends Controller
 
         $story->delete();
 
-        return redirect()->route('stories.index')->with('success', 'Novel berhasil dihapus.');
+        return redirect()->route('stories.index')->with('success', 'Cerita berhasil dihapus.');
     }
 }

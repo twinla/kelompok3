@@ -1,8 +1,8 @@
 @auth
-<nav class="tp-reader-nav" aria-label="Your reading tools">
-    <a href="{{ route('library.index', ['shelf' => 'saved']) }}">My Library</a>
-    <a href="{{ route('reading.bookmarks') }}">Bookmarks</a>
-    <a href="{{ route('reading.history') }}">Reading History</a>
-    <a href="{{ route('recommendations.index') }}">Recommendations</a>
+<nav class="tp-reader-nav" aria-label="Menu bacaan">
+    <a href="{{ route('library.index', ['shelf' => 'saved']) }}">Pustaka Saya</a>
+    <a href="{{ route('reading.bookmarks') }}">Penanda Bacaan</a>
+    <a href="{{ route('reading.history') }}">Riwayat Bacaan</a>
+    <a href="{{ route('recommendations.index') }}">Rekomendasi</a>
 </nav>
 @endauth

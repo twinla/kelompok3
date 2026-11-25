@@ -1,0 +1,34 @@
+TALEPAD_STORY_IMPORT_V1
+
+TITLE: [Judul cerita, maksimal 150 karakter]
+AUTHOR: [Nama penulis atau nama pena, maksimal 100 karakter]
+GENRE: [Genre, maksimal 80 karakter]
+
+SYNOPSIS_START
+[Tulis sinopsis cerita di sini, maksimal 2.000 karakter. Hapus teks placeholder ini.]
+SYNOPSIS_END
+
+CHAPTER_START: 1
+CHAPTER_TITLE: [Judul Bab 1, maksimal 160 karakter]
+CHAPTER_CONTENT_START
+[Tulis isi Bab 1 di sini, minimal 20 karakter. Hapus teks contoh ini.]
+CHAPTER_CONTENT_END
+CHAPTER_END
+
+CHAPTER_START: 2
+CHAPTER_TITLE: [Judul Bab 2, maksimal 160 karakter]
+CHAPTER_CONTENT_START
+[Tulis isi Bab 2 di sini, minimal 20 karakter. Hapus blok Bab 2 ini jika cerita hanya memiliki satu bab.]
+CHAPTER_CONTENT_END
+CHAPTER_END
+
+TALEPAD_STORY_END
+
+PANDUAN:
+1. Ganti semua teks di dalam [kurung siku] dengan isi cerita sebenarnya.
+2. Jangan mengubah atau menghapus marker TALEPAD_STORY_IMPORT_V1, SYNOPSIS_START, SYNOPSIS_END, CHAPTER_START, CHAPTER_TITLE, CHAPTER_CONTENT_START, CHAPTER_CONTENT_END, CHAPTER_END, dan TALEPAD_STORY_END.
+3. Untuk bab berikutnya, salin satu blok CHAPTER_START sampai CHAPTER_END, lalu ubah nomornya menjadi 3, 4, dan seterusnya.
+4. Nomor bab harus berurutan mulai dari 1.
+5. Satu file PDF hanya berisi satu cerita.
+6. Simpan dokumen sebagai PDF berbasis teks, bukan hasil scan/foto. Gunakan satu kolom, jangan memakai header/footer, dan sisakan satu baris kosong antarparagraf.
+7. Setelah selesai, ekspor dokumen dari Word/Google Docs menjadi PDF, lalu unggah di TalePad.

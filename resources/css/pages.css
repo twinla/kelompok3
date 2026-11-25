@@ -1,5 +1,5 @@
 /* Shared legacy view compatibility: the existing pages keep working during the redesign. */
-.hero { position: relative; min-height: 410px; margin: 20px 0 64px; padding: clamp(32px, 6vw, 76px); display: flex; align-items: center; overflow: hidden; color: #F8F4EA; background: radial-gradient(circle at 82% 42%, rgba(198,163,107,.28), transparent 22rem), linear-gradient(115deg, #263A30, #31483A 68%, #405345); border-radius: 28px; box-shadow: var(--tp-shadow-card); }
+.hero { position: relative; min-height: 410px; margin: 20px 0 64px; padding: clamp(32px, 6vw, 76px); display: flex; align-items: center; overflow: hidden; color: #F8F4EA; background: radial-gradient(circle at 82% 42%, rgba(238, 236, 233, 0.28), transparent 22rem), linear-gradient(115deg, #263A30, #31483A 68%, #405345); border-radius: 28px; box-shadow: var(--tp-shadow-card); }
 .hero::after { position: absolute; right: 8%; top: 12%; width: 330px; aspect-ratio: 1; content: ''; border: 1px solid rgba(198,163,107,.35); border-radius: 50%; box-shadow: 0 0 0 24px rgba(198,163,107,.045), 0 0 0 54px rgba(198,163,107,.035); }
 .hero-content { position: relative; z-index: 1; max-width: 660px; }
 .hero .eyebrow { color: var(--tp-gold); }

@@ -1,68 +1,68 @@
 {{-- Navbar TalePad bergaya Wattpad: logo, Browse/Community, search | Write, Log in, Sign Up --}}
 <header class="tp-navbar">
     <div class="tp-navbar-inner">
-        <a href="{{ route('stories.index') }}" class="tp-logo" aria-label="TalePad home">
+        <a href="{{ route('stories.index') }}" class="tp-logo" aria-label="Beranda TalePad">
             <span class="tp-logo-mark" aria-hidden="true">T</span>
         </a>
 
-        <nav class="tp-nav-links" aria-label="Main">
+        <nav class="tp-nav-links" aria-label="Navigasi utama">
             <div class="tp-dropdown">
                 <button type="button" class="tp-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
-                    Browse
+                    Jelajahi
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
                 <div class="tp-dropdown-menu">
-                    <a href="{{ route('stories.index') }}#discover">All stories</a>
-                    <a href="{{ route('stories.index', ['q' => 'Romance']) }}">Romance</a>
-                    <a href="{{ route('stories.index', ['q' => 'Fantasy']) }}">Fantasy</a>
-                    <a href="{{ route('stories.index', ['q' => 'Mystery']) }}">Mystery</a>
-                    <a href="{{ route('stories.index', ['q' => 'Horror']) }}">Horror</a>
-                    <a href="{{ route('stories.index', ['q' => 'Sci-Fi']) }}">Sci-Fi</a>
+                    <a href="{{ route('stories.index') }}#discover">Semua cerita</a>
+                    <a href="{{ route('stories.index', ['q' => 'Romance']) }}">Romansa</a>
+                    <a href="{{ route('stories.index', ['q' => 'Fantasy']) }}">Fantasi</a>
+                    <a href="{{ route('stories.index', ['q' => 'Mystery']) }}">Misteri</a>
+                    <a href="{{ route('stories.index', ['q' => 'Horror']) }}">Horor</a>
+                    <a href="{{ route('stories.index', ['q' => 'Sci-Fi']) }}">Fiksi Ilmiah</a>
                 </div>
             </div>
 
             <div class="tp-dropdown">
                 <button type="button" class="tp-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
-                    Community
+                    Komunitas
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
                 <div class="tp-dropdown-menu">
-                    <a href="{{ route('stories.index') }}#discover">Discover</a>
-                    <a href="{{ route('stories.random') }}">Randomize</a>
+                    <a href="{{ route('stories.index') }}#discover">Jelajahi</a>
+                    <a href="{{ route('stories.random') }}">Acak cerita</a>
                 </div>
             </div>
         </nav>
 
         <form action="{{ route('stories.index') }}" method="GET" class="tp-search" role="search">
-            <button type="submit" class="tp-search-submit" aria-label="Search">
+            <button type="submit" class="tp-search-submit" aria-label="Cari">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
             </button>
-            <input type="text" name="q" value="{{ request('q') }}" placeholder="Search" aria-label="Search titles, authors, or genres" autocomplete="off">
+            <input type="text" name="q" value="{{ request('q') }}" placeholder="Cari cerita" aria-label="Cari judul, penulis, atau genre" autocomplete="off">
             @if(request('q'))
-                <a href="{{ route('stories.index') }}" class="tp-search-clear" aria-label="Clear search">&times;</a>
+                <a href="{{ route('stories.index') }}" class="tp-search-clear" aria-label="Hapus pencarian">&times;</a>
             @endif
         </form>
 
         <div class="tp-nav-right">
             <div class="tp-dropdown tp-dropdown-right">
                 <button type="button" class="tp-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
-                    Write
+                    Menulis
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
                 <div class="tp-dropdown-menu">
-                    <a href="{{ route('stories.create') }}">Create a new story</a>
+                    <a href="{{ route('stories.create') }}">Tulis cerita baru</a>
                 </div>
             </div>
 
             @auth
-                <span class="tp-nav-greeting">Hi, {{ auth()->user()->name }}</span>
+                <span class="tp-nav-greeting">Halo, {{ auth()->user()->name }}</span>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="tp-nav-text">Log out</button>
+                    <button type="submit" class="tp-nav-text">Keluar</button>
                 </form>
             @else
-                <a href="{{ route('login') }}" class="tp-nav-text {{ request()->routeIs('login') ? 'is-active' : '' }}">Log in</a>
-                <a href="{{ route('register') }}" class="tp-nav-text {{ request()->routeIs('register') ? 'is-active' : '' }}">Sign Up</a>
+                <a href="{{ route('login') }}" class="tp-nav-text {{ request()->routeIs('login') ? 'is-active' : '' }}">Masuk</a>
+                <a href="{{ route('register') }}" class="tp-nav-text {{ request()->routeIs('register') ? 'is-active' : '' }}">Daftar</a>
             @endauth
         </div>
     </div>

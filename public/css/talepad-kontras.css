@@ -1,0 +1,312 @@
+/* TalePad — pemerataan kontras antarmuka.
+   Dimuat paling akhir dari layout agar aturan perbaikan tidak tertimpa stylesheet halaman. */
+
+:root {
+    --tp-muted: #68685F;
+}
+
+html[data-theme="dark"] {
+    --tp-ivory: #F3EEE3;
+    --tp-ink: #F3EEE3;
+    --tp-muted: #C9C4BC;
+    --tp-line: rgba(243, 238, 227, .18);
+}
+
+html[data-theme="dark"] body {
+    color: #F3EEE3;
+}
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] .tp-profile-stat-number,
+html[data-theme="dark"] .tp-pdf-heading h1,
+html[data-theme="dark"] .tp-pdf-view-header h1 {
+    color: #F3EEE3;
+}
+
+html[data-theme="dark"] .eyebrow,
+html[data-theme="dark"] .tp-eyebrow,
+html[data-theme="dark"] .genre,
+html[data-theme="dark"] .story-info .genre,
+html[data-theme="dark"] .reader-details > .genre,
+html[data-theme="dark"] .tp-pdf-eyebrow {
+    color: #E8B9C2;
+}
+
+html[data-theme="dark"] .story-card,
+html[data-theme="dark"] .tp-panel,
+html[data-theme="dark"] .tp-social-bar,
+html[data-theme="dark"] .tp-progress-card,
+html[data-theme="dark"] .tp-history-row,
+html[data-theme="dark"] .tp-comment-card,
+html[data-theme="dark"] .tp-profile-stat,
+html[data-theme="dark"] .tp-profile-page .story-card,
+html[data-theme="dark"] .tp-profile-page .tp-profile-empty,
+html[data-theme="dark"] .tp-profile-page .tp-profile-drafts,
+html[data-theme="dark"] .tp-profile-draft-item,
+html[data-theme="dark"] .story-form,
+html[data-theme="dark"] .tp-editor-form,
+html[data-theme="dark"] .tp-auth-card,
+html[data-theme="dark"] .tp-profile-edit-form,
+html[data-theme="dark"] .tp-chapter-section,
+html[data-theme="dark"] .tp-character-section,
+html[data-theme="dark"] .tp-comments-section,
+html[data-theme="dark"] .tp-character-form-wrap,
+html[data-theme="dark"] .tp-reading-toolbar,
+html[data-theme="dark"] .tp-discovery-filters,
+html[data-theme="dark"] .search-form,
+html[data-theme="dark"] .empty-state,
+html[data-theme="dark"] .tp-pdf-upload-card,
+html[data-theme="dark"] .tp-pdf-document-card,
+html[data-theme="dark"] .tp-pdf-empty-state,
+html[data-theme="dark"] .tp-story-import-card,
+html[data-theme="dark"] .tp-story-import-guide {
+    color: #F3EEE3;
+    background: #252E28;
+    border-color: rgba(243, 238, 227, .16);
+}
+
+html[data-theme="dark"] .tp-profile-heading {
+    color: #F3EEE3;
+    background: linear-gradient(120deg, #343137, #403B42);
+    border-color: rgba(243, 238, 227, .18);
+}
+
+html[data-theme="dark"] .tp-profile-identity h1,
+html[data-theme="dark"] .tp-profile-identity p,
+html[data-theme="dark"] .tp-profile-bio,
+html[data-theme="dark"] .tp-profile-member-since {
+    color: #F3EEE3;
+}
+
+html[data-theme="dark"] .tp-profile-bio-empty,
+html[data-theme="dark"] .tp-profile-stat-label,
+html[data-theme="dark"] .story-info p,
+html[data-theme="dark"] .tp-card-stats,
+html[data-theme="dark"] .reader-author,
+html[data-theme="dark"] .reader-meta,
+html[data-theme="dark"] .tp-feature-intro,
+html[data-theme="dark"] .tp-editor-subtitle,
+html[data-theme="dark"] .form-intro,
+html[data-theme="dark"] .tp-section-title-row p,
+html[data-theme="dark"] .tp-character-intro,
+html[data-theme="dark"] .tp-character-info p,
+html[data-theme="dark"] .tp-comment-meta span,
+html[data-theme="dark"] .tp-field-hint,
+html[data-theme="dark"] .tp-pdf-upload-copy p,
+html[data-theme="dark"] .tp-pdf-document-info p,
+html[data-theme="dark"] .tp-pdf-upload-note,
+html[data-theme="dark"] .tp-story-import-card-heading p,
+html[data-theme="dark"] .tp-story-import-guide p,
+html[data-theme="dark"] .tp-story-import-help,
+html[data-theme="dark"] .tp-story-import-privacy,
+html[data-theme="dark"] .tp-story-import-spec ul,
+html[data-theme="dark"] .tp-story-import-manual-option,
+html[data-theme="dark"] .tp-per-page-control,
+html[data-theme="dark"] .tp-pagination-summary {
+    color: #C9C4BC;
+}
+
+html[data-theme="dark"] .story-bottom,
+html[data-theme="dark"] .story-info p a,
+html[data-theme="dark"] .reader-author a,
+html[data-theme="dark"] .tp-reader-owner-link a,
+html[data-theme="dark"] .tp-history-status a,
+html[data-theme="dark"] .tp-story-import-manual-option a,
+html[data-theme="dark"] .tp-pdf-back-link,
+html[data-theme="dark"] .tp-auth-switch a,
+html[data-theme="dark"] .tp-profile-draft-badge,
+html[data-theme="dark"] .tp-comment-meta strong,
+html[data-theme="dark"] .tp-chapter-row strong,
+html[data-theme="dark"] .tp-profile-stat-number {
+    color: #E8C98E;
+}
+
+html[data-theme="dark"] .tp-action-button,
+html[data-theme="dark"] .tp-text-button,
+html[data-theme="dark"] .tp-chapter-owner-actions a,
+html[data-theme="dark"] .tp-chapter-owner-actions button,
+html[data-theme="dark"] .tp-comment-delete,
+html[data-theme="dark"] .tp-character-delete,
+html[data-theme="dark"] .tp-password-toggle,
+html[data-theme="dark"] .tp-pdf-secondary-button,
+html[data-theme="dark"] .tp-pdf-delete-button {
+    color: #F0C4CC;
+    border-color: rgba(232, 185, 194, .42);
+}
+
+html[data-theme="dark"] .tp-action-button.is-active {
+    color: #FFDCE2;
+    background: rgba(232, 185, 194, .15);
+}
+
+html[data-theme="dark"] .btn-outline,
+html[data-theme="dark"] .tp-button-outline {
+    color: #F3EEE3;
+    border-color: rgba(243, 238, 227, .42);
+}
+
+html[data-theme="dark"] .btn-outline:hover,
+html[data-theme="dark"] .tp-button-outline:hover {
+    color: #FFFFFF;
+    background: rgba(243, 238, 227, .10);
+}
+
+html[data-theme="dark"] .tp-profile-page .story-info,
+html[data-theme="dark"] .tp-profile-page .story-bottom,
+html[data-theme="dark"] .tp-chapter-row,
+html[data-theme="dark"] .tp-character-card,
+html[data-theme="dark"] .tp-comment-card {
+    background: #202720;
+    border-color: rgba(243, 238, 227, .15);
+}
+
+html[data-theme="dark"] .tp-chapter-number {
+    color: #F0C4CC;
+    background: rgba(232, 185, 194, .14);
+}
+
+html[data-theme="dark"] .tp-profile-page .story-info h3,
+html[data-theme="dark"] .tp-profile-page .story-info h3 a,
+html[data-theme="dark"] .tp-profile-page .story-bottom a {
+    color: #F3EEE3;
+}
+
+html[data-theme="dark"] .story-form .form-group > label,
+html[data-theme="dark"] .tp-form-field label,
+html[data-theme="dark"] .tp-auth-form label,
+html[data-theme="dark"] .tp-character-form label,
+html[data-theme="dark"] .form-group label,
+html[data-theme="dark"] .tp-profile-edit-form label,
+html[data-theme="dark"] .tp-pdf-file-label,
+html[data-theme="dark"] .tp-story-import-form label {
+    color: #F3EEE3;
+}
+
+html[data-theme="dark"] .story-form input:not([type=file]),
+html[data-theme="dark"] .story-form select,
+html[data-theme="dark"] .story-form textarea,
+html[data-theme="dark"] .tp-editor-form input,
+html[data-theme="dark"] .tp-editor-form select,
+html[data-theme="dark"] .tp-editor-form textarea,
+html[data-theme="dark"] .tp-auth-form input,
+html[data-theme="dark"] .tp-profile-edit-form input:not([type=file]),
+html[data-theme="dark"] .tp-profile-edit-form textarea,
+html[data-theme="dark"] .tp-character-form input:not([type=file]),
+html[data-theme="dark"] .tp-character-form textarea,
+html[data-theme="dark"] .tp-comment-form textarea,
+html[data-theme="dark"] .tp-discovery-filters input,
+html[data-theme="dark"] .tp-discovery-filters select,
+html[data-theme="dark"] .search-form input,
+html[data-theme="dark"] .tp-reading-toolbar select,
+html[data-theme="dark"] .tp-chapter-tools input,
+html[data-theme="dark"] .tp-chapter-tools select,
+html[data-theme="dark"] .tp-story-import-form input[type=file],
+html[data-theme="dark"] .tp-story-import-form select,
+html[data-theme="dark"] .tp-pdf-upload-form input[type=file] {
+    color: #F3EEE3;
+    background: #202720;
+    border-color: rgba(243, 238, 227, .24);
+}
+
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder {
+    color: #BDB5B0;
+    opacity: 1;
+}
+
+html[data-theme="dark"] .tp-story-import-example {
+    color: #F3EEE3;
+    background: #202720;
+    border-color: rgba(243, 238, 227, .18);
+}
+
+html[data-theme="dark"] .tp-story-import-example pre {
+    color: #F3EEE3;
+    background: #191F1B;
+}
+
+html[data-theme="dark"] .tp-story-import-template,
+html[data-theme="dark"] .tp-story-import-template-note,
+html[data-theme="dark"] .tp-story-import-spec h3,
+html[data-theme="dark"] .tp-story-import-example summary {
+    color: #E8C98E;
+}
+
+html[data-theme="dark"] .tp-pdf-error,
+html[data-theme="dark"] .tp-story-import-error,
+html[data-theme="dark"] .error {
+    color: #FFB8C4;
+}
+
+html[data-theme="dark"] .tp-status-complete,
+html[data-theme="dark"] .tp-status-reading {
+    color: #E4F1E3;
+    background: #34483A;
+}
+
+html[data-theme="dark"] a:focus-visible,
+html[data-theme="dark"] button:focus-visible,
+html[data-theme="dark"] input:focus-visible,
+html[data-theme="dark"] textarea:focus-visible,
+html[data-theme="dark"] select:focus-visible {
+    outline-color: #E8C98E;
+    outline-offset: 3px;
+}
+
+/* Ringkas: elemen teks kecil pada tema terang tetap memakai warna abu-abu tua. */
+html[data-theme="light"] .tp-field-hint,
+html[data-theme="light"] .tp-story-import-help,
+html[data-theme="light"] .tp-story-import-privacy,
+html[data-theme="light"] .tp-pdf-upload-note,
+html[data-theme="light"] .tp-pdf-document-info p {
+    color: #62635D;
+}
+
+
+/* Notifikasi, keadaan kosong, dan komponen kecil yang sering memakai warna tetap. */
+html[data-theme="dark"] .alert,
+html[data-theme="dark"] .tp-flash {
+    border-color: rgba(243, 238, 227, .18);
+}
+
+html[data-theme="dark"] .alert-success,
+html[data-theme="dark"] .tp-flash-success {
+    color: #E5F5E8;
+    background: #263D30;
+}
+
+html[data-theme="dark"] .alert-error,
+html[data-theme="dark"] .tp-flash-error {
+    color: #FFE0E5;
+    background: #472D34;
+}
+
+html[data-theme="dark"] .tp-empty-note,
+html[data-theme="dark"] .tp-no-characters {
+    color: #E5E0D8;
+    background: #303B32;
+}
+
+html[data-theme="dark"] .tp-character-form-wrap,
+html[data-theme="dark"] .tp-profile-page .tp-profile-empty,
+html[data-theme="dark"] .tp-profile-page .tp-profile-drafts {
+    color: #F3EEE3;
+}
+
+html[data-theme="dark"] .tp-pdf-document-info h3,
+html[data-theme="dark"] .tp-pdf-list-heading h2,
+html[data-theme="dark"] .tp-pdf-upload-copy h2,
+html[data-theme="dark"] .tp-story-import-card h2,
+html[data-theme="dark"] .tp-story-import-guide h2 {
+    color: #F3EEE3;
+}
+
+html[data-theme="light"] .tp-pdf-document-info p,
+html[data-theme="light"] .tp-story-import-help,
+html[data-theme="light"] .tp-story-import-template-note,
+html[data-theme="light"] .tp-field-hint {
+    color: #5F6059;
+}

@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
-@section('title', 'Log In | TalePad')
+@section('title', 'Masuk | TalePad')
 
 @section('content')
 <section class="tp-auth-page">
     <div class="tp-auth-card">
-        <div class="eyebrow">WELCOME BACK</div>
+        <div class="eyebrow">SELAMAT DATANG KEMBALI</div>
 
-        <h1>Continue your <em>story.</em></h1>
+        <h1>Lanjutkan <em>ceritamu.</em></h1>
 
         <p class="tp-auth-intro">
-            Log in to publish, manage, and share your novels.
+            Masuk untuk menerbitkan, mengelola, dan membagikan ceritamu.
         </p>
 
         <form action="{{ route('login.store') }}"
@@ -19,7 +19,7 @@
 
             @csrf
 
-            <label for="email">Email address</label>
+            <label for="email">Alamat email</label>
             <input
                 id="email"
                 type="email"
@@ -33,7 +33,7 @@
                 <small class="error">{{ $message }}</small>
             @enderror
 
-            <label for="password">Password</label>
+            <label for="password">Kata sandi</label>
             <input
                 id="password"
                 type="password"
@@ -48,17 +48,17 @@
 
             <label class="tp-remember-label">
                 <input type="checkbox" name="remember" value="1">
-                Remember me
+                Ingat saya
             </label>
 
             <button type="submit" class="btn btn-dark">
-                Log In
+                Masuk
             </button>
         </form>
 
         <p class="tp-auth-switch">
-            New to TalePad?
-            <a href="{{ route('register') }}">Create an account</a>
+            Baru di TalePad?
+            <a href="{{ route('register') }}">Buat akun</a>
         </p>
     </div>
 </section>

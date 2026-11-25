@@ -29,6 +29,10 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.store');
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 Route::middleware('auth')->group(function () {
+    // Profile settings: only the authenticated account owner can edit their profile.
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
     // Novel dan galeri karakter.
     Route::get('/stories/create', [StoryController::class, 'create'])->name('stories.create');
     Route::post('/stories', [StoryController::class, 'store'])->name('stories.store');
@@ -61,6 +65,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/authors/{user}/follow', [InteractionController::class, 'toggleFollow'])->name('authors.follow');
 });
 
+// TalePad story PDF import routes (must be before /stories/{story}).
+require __DIR__.'/story-import.php';
+
 // Public reading route terakhir agar tidak menangkap /stories/create.
 Route::get('/stories/{story}/chapters/{chapter}', [ChapterController::class, 'read'])->name('chapters.read');
 Route::get('/stories/{story}', [StoryPageController::class, 'show'])->name('stories.show');
+
+// TalePad PDF Library and public story PDF export.
+require __DIR__.'/pdf-feature.php';

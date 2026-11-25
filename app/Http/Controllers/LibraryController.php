@@ -37,14 +37,14 @@ class LibraryController extends Controller
         );
 
         return back()->with('success', $data['shelf'] === 'saved'
-            ? 'Novel disimpan ke Saved Books.'
-            : 'Novel ditambahkan ke Want to Read.');
+            ? 'Cerita disimpan ke Buku Tersimpan.'
+            : 'Cerita ditambahkan ke daftar Ingin Dibaca.');
     }
 
     public function destroy(Request $request, LibraryEntry $entry): RedirectResponse
     {
         abort_unless((int) $entry->user_id === (int) $request->user()->id, 403);
         $entry->delete();
-        return back()->with('success', 'Novel dihapus dari library.');
+        return back()->with('success', 'Cerita dihapus dari pustaka.');
     }
 }

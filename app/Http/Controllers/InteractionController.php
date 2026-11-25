@@ -21,10 +21,10 @@ class InteractionController extends Controller
 
         if ($like) {
             $like->delete();
-            $message = 'Like dihapus.';
+            $message = 'Tanda suka dihapus.';
         } else {
             StoryLike::create(['user_id' => $request->user()->id, 'story_id' => $story->id]);
-            $message = 'Kamu menyukai novel ini.';
+            $message = 'Kamu menyukai cerita ini.';
         }
         return back()->with('success', $message);
     }
@@ -59,7 +59,7 @@ class InteractionController extends Controller
             ['user_id' => $request->user()->id, 'story_id' => $story->id],
             ['rating' => $data['rating']]
         );
-        return back()->with('success', 'Rating kamu berhasil disimpan.');
+        return back()->with('success', 'Penilaian kamu berhasil disimpan.');
     }
 
     public function toggleFollow(Request $request, User $user): RedirectResponse
@@ -70,10 +70,10 @@ class InteractionController extends Controller
 
         if ($follow) {
             $follow->delete();
-            $message = 'Kamu berhenti mengikuti author ini.';
+            $message = 'Kamu berhenti mengikuti penulis ini.';
         } else {
             UserFollow::create(['follower_id' => $request->user()->id, 'followed_id' => $user->id]);
-            $message = 'Kamu sekarang mengikuti author ini.';
+            $message = 'Kamu sekarang mengikuti penulis ini.';
         }
         return back()->with('success', $message);
     }

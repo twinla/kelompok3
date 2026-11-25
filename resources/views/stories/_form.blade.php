@@ -15,13 +15,13 @@
     @endif
 
     <div class="form-group">
-        <label>Story Title</label>
+        <label>Judul Cerita</label>
 
         <input
             type="text"
             name="title"
             value="{{ old('title', $story->title) }}"
-            placeholder="Enter your novel title"
+            placeholder="Masukkan judul cerita"
             required
         >
 
@@ -34,13 +34,13 @@
     <div class="form-row">
 
         <div class="form-group">
-            <label>Author Name</label>
+            <label>Nama Penulis</label>
 
             <input
                 type="text"
                 name="author"
                 value="{{ old('author', $story->author) }}"
-                placeholder="Your author name"
+                placeholder="Nama pena kamu"
                 required
             >
 
@@ -53,7 +53,7 @@
             <label>Genre</label>
 
             <select name="genre" required>
-                <option value="">Choose Genre</option>
+                <option value="">Pilih genre</option>
 
                 @foreach([
                     'Romance',
@@ -71,7 +71,7 @@
                         value="{{ $genre }}"
                         @selected(old('genre', $story->genre) === $genre)
                     >
-                        {{ $genre }}
+                        {{ __($genre) }}
                     </option>
 
                 @endforeach
@@ -87,12 +87,12 @@
 
 
     <div class="form-group">
-        <label>Synopsis</label>
+        <label>Sinopsis</label>
 
         <textarea
             name="synopsis"
             rows="4"
-            placeholder="Write a short description of your story..."
+            placeholder="Tulis ringkasan singkat ceritamu..."
             required
         >{{ old('synopsis', $story->synopsis) }}</textarea>
 
@@ -103,12 +103,12 @@
 
 
     <div class="form-group">
-        <label>Story Content</label>
+        <label>Isi Cerita</label>
 
         <textarea
             name="content"
             rows="15"
-            placeholder="Start writing your story here..."
+            placeholder="Mulai tulis ceritamu di sini..."
             required
         >{{ old('content', $story->content) }}</textarea>
 
@@ -119,12 +119,12 @@
 
 
     <div class="form-group">
-        <label>Book Cover</label>
+        <label>Sampul Cerita</label>
 
         @if($story->cover)
             <img
                 src="{{ asset('storage/' . $story->cover) }}"
-                alt="Current cover"
+                alt="Sampul saat ini"
                 class="current-cover"
             >
         @endif
@@ -135,7 +135,7 @@
             accept=".jpg,.jpeg,.png,.webp"
         >
 
-        <small>Maximum 2 MB. JPG, PNG, or WEBP.</small>
+        <small>Maksimal 2 MB. Format JPG, PNG, atau WEBP.</small>
 
         @error('cover')
             <small class="error">{{ $message }}</small>
@@ -144,17 +144,17 @@
 
 
     <div class="form-group">
-        <label>Publication Status</label>
+        <label>Status Publikasi</label>
 
         <select name="status" required>
             <option value="published"
                 @selected(old('status', $story->status ?? 'published') === 'published')>
-                Published
+                Terbit
             </option>
 
             <option value="draft"
                 @selected(old('status', $story->status ?? '') === 'draft')>
-                Draft
+                Draf
             </option>
         </select>
     </div>
@@ -162,11 +162,11 @@
 
     <div class="form-actions">
         <a href="{{ route('stories.index') }}" class="btn btn-outline">
-            Cancel
+            Batal
         </a>
 
         <button type="submit" class="btn btn-dark">
-            {{ $story->exists ? 'Save Changes' : 'Publish Story' }}
+            {{ $story->exists ? 'Simpan Perubahan' : 'Terbitkan Cerita' }}
         </button>
     </div>
 

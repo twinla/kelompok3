@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!field) return;
             const reveal = field.type === 'password';
             field.type = reveal ? 'text' : 'password';
-            button.textContent = reveal ? 'Hide' : 'Show';
+            button.textContent = reveal ? 'Sembunyikan' : 'Tampilkan';
             button.setAttribute('aria-pressed', String(reveal));
         });
     });
@@ -91,11 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (image.dataset.fallbackShown === 'true') return;
             image.dataset.fallbackShown = 'true';
             const card = image.closest('.story-card, .reader-header, .tp-progress-card');
-            const genre = card?.querySelector('.genre')?.textContent?.trim() || 'TALEPAD EDITION';
-            const title = card?.querySelector('h1, h3')?.textContent?.trim() || image.alt || 'A TalePad Story';
+            const genre = card?.querySelector('.genre')?.textContent?.trim() || 'EDISI TALEPAD';
+            const title = card?.querySelector('h1, h3')?.textContent?.trim() || image.alt || 'Cerita TalePad';
             const fallback = document.createElement('div');
             fallback.className = 'cover-placeholder tp-cover-fallback';
-            fallback.innerHTML = '<span></span><strong></strong><small>TALEPAD EDITION</small>';
+            fallback.innerHTML = '<span></span><strong></strong><small>EDISI TALEPAD</small>';
             fallback.querySelector('span').textContent = genre;
             fallback.querySelector('strong').textContent = title;
             image.replaceWith(fallback);

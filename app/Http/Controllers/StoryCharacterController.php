@@ -27,7 +27,7 @@ class StoryCharacterController extends Controller
         $story->characters()->create($validated);
 
         return redirect()->route('stories.show', $story)
-            ->with('success', 'Karakter berhasil ditambahkan ke novel!');
+            ->with('success', 'Tokoh berhasil ditambahkan ke cerita!');
     }
 
     public function destroy(Story $story, StoryCharacter $character): RedirectResponse
@@ -44,6 +44,6 @@ class StoryCharacterController extends Controller
         $character->delete();
 
         return redirect()->route('stories.show', $story)
-            ->with('success', 'Karakter berhasil dihapus.');
+            ->with('success', 'Tokoh berhasil dihapus.');
     }
 }

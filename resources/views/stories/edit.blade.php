@@ -1,18 +1,18 @@
 
 @extends('layouts.app')
 
-@section('title', 'Edit Story')
+@section('title', 'Sunting Cerita')
 
 @section('content')
 
 <section class="form-section">
 
-    <div class="eyebrow">AUTHOR STUDIO</div>
+    <div class="eyebrow">RUANG KERJA PENULIS</div>
 
-    <h1>Refine your <em>story.</em></h1>
+    <h1>Sempurnakan <em>ceritamu.</em></h1>
 
     <p class="form-intro">
-        Update the details or content of your novel.
+        Perbarui detail atau isi ceritamu.
     </p>
 
     @include('stories._form')

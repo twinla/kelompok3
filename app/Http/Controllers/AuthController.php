@@ -75,6 +75,6 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('stories.index')
-            ->with('success', 'Kamu berhasil logout. Sampai jumpa lagi!');
+            ->with('success', 'Kamu berhasil keluar. Sampai jumpa lagi!');
     }
 }

@@ -40,7 +40,7 @@ class ChapterController extends Controller
         });
 
         return redirect()->route('chapters.read', [$story, $chapter])
-            ->with('success', 'Chapter berhasil ditambahkan.');
+            ->with('success', 'Bab berhasil ditambahkan.');
     }
 
     public function edit(Story $story, StoryChapter $chapter): View
@@ -69,7 +69,7 @@ class ChapterController extends Controller
             $story->update(['content' => $data['content']]);
         }
 
-        return redirect()->route('stories.show', $story)->with('success', 'Chapter berhasil diperbarui.');
+        return redirect()->route('stories.show', $story)->with('success', 'Bab berhasil diperbarui.');
     }
 
     public function destroy(Story $story, StoryChapter $chapter): RedirectResponse
@@ -78,7 +78,7 @@ class ChapterController extends Controller
         $this->ensureChapterBelongsToStory($story, $chapter);
         $chapter->delete();
 
-        return redirect()->route('stories.show', $story)->with('success', 'Chapter berhasil dihapus.');
+        return redirect()->route('stories.show', $story)->with('success', 'Bab berhasil dihapus.');
     }
 
     public function read(Story $story, StoryChapter $chapter): View
