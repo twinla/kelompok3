@@ -102,13 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { once: true });
     });
 
-    // Respect a previously selected appearance if the user set one elsewhere.
-    try {
-        const savedTheme = localStorage.getItem('talepad-theme');
-        if (savedTheme === 'dark' || savedTheme === 'light') {
-            document.documentElement.dataset.theme = savedTheme;
-        }
-    } catch (_) {
-        // Storage can be unavailable in strict browser privacy modes; the page remains usable.
-    }
+    // TalePad memakai tema deep forest sebagai tampilan utama.
+    // Nilai lama "light" di localStorage tidak boleh menimpa tema baru.
+    document.documentElement.dataset.theme = 'dark';
 });

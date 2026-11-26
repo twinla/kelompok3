@@ -1,0 +1,115 @@
+
+/*
+ * TalePad — Responsive Laptop Screen Fit
+ * Mengatur lebar konten dan responsivitas layar.
+ */
+
+/* Pengaturan dasar */
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+/* Lebar utama website */
+.container,
+.tp-container,
+main > .container,
+.tp-navbar,
+.tp-reader-nav,
+.tp-mobile-panel,
+.tp-footer-inner {
+    width: calc(100% - clamp(32px, 4vw, 80px)) !important;
+    max-width: 1840px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box;
+}
+
+/* Area utama */
+main > .container > .hero,
+main > .container > .tp-top-search,
+main > .container > .tp-discovery,
+main > .container > section {
+    width: 100%;
+    max-width: 100%;
+}
+
+.hero {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Grid novel */
+.story-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.tp-navbar-inner {
+    min-width: 0;
+}
+
+/* Laptop dan layar menengah */
+@media (min-width: 901px) and (max-width: 1200px) {
+    .tp-navbar {
+        min-height: 68px;
+        padding-inline: 18px;
+    }
+
+    .tp-nav-links,
+    .tp-nav-right {
+        display: none !important;
+    }
+
+    .tp-search {
+        display: flex !important;
+        width: clamp(180px, 34vw, 340px);
+        margin-left: auto;
+    }
+
+    .tp-mobile-toggle {
+        display: grid !important;
+        margin-left: 0;
+        flex: 0 0 42px;
+    }
+
+    .story-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* Tablet */
+@media (min-width: 561px) and (max-width: 900px) {
+    .container,
+    .tp-container,
+    main > .container,
+    .tp-navbar,
+    .tp-reader-nav,
+    .tp-footer-inner {
+        width: calc(100% - 40px) !important;
+    }
+
+    .story-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Smartphone */
+@media (max-width: 560px) {
+    .container,
+    .tp-container,
+    main > .container,
+    .tp-navbar,
+    .tp-reader-nav,
+    .tp-mobile-panel,
+    .tp-footer-inner {
+        width: calc(100% - 28px) !important;
+    }
+
+    .story-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+}

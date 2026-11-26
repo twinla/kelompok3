@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="id" data-theme="light">
+<html lang="id" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="theme-color" content="#263A30">
+    <meta name="theme-color" content="#15251D">
     <meta name="description" content="TalePad — temukan cerita, jelajahi dunia, dan bagikan tulisanmu.">
     <title>@yield('title', 'Jelajahi Cerita') — TalePad</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,6 +15,8 @@
     {{-- Loaded after Vite and page styles so pagination stays styled even with a stale build manifest. --}}
     <link rel="stylesheet" href="{{ asset('css/talepad-pagination.css') }}?v=4">
     <link rel="stylesheet" href="{{ asset('css/talepad-kontras.css') }}?v=20261125-2">
+    <link rel="stylesheet" href="{{ asset('css/talepad-final-polish.css') }}?v=20261126-1">
+    <link rel="stylesheet" href="{{ asset('css/talepad-screen-fit.css') }}?v=20261126-2">
 </head>
 <body>
     <header class="tp-site-header">
@@ -72,6 +74,12 @@
             </div>
         </div>
         <nav class="tp-mobile-panel" id="tp-mobile-panel" data-mobile-panel aria-label="Navigasi mobile">
+            <form action="{{ route('stories.index') }}" method="GET" class="tp-search tp-mobile-search" role="search">
+                <button type="submit" class="tp-search-submit" aria-label="Cari cerita">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+                </button>
+                <input type="search" name="q" value="{{ request('q') }}" placeholder="Cari cerita..." aria-label="Cari judul, penulis, atau genre">
+            </form>
             <a href="{{ route('stories.index') }}">Jelajahi cerita</a>
             <a href="{{ route('recommendations.index') }}">Rekomendasi</a>
             <a href="{{ route('stories.random') }}">Acak cerita</a>

@@ -1,0 +1,397 @@
+/*
+ * TalePad final polish
+ * Tema: Deep Forest / Parchment / Antique Gold
+ * Perubahan ini dipisahkan dari stylesheet utama agar mudah dibatalkan.
+ */
+
+:root {
+    --tp-content-width: 1320px;
+}
+
+/* ==============================
+   DEEP FOREST THEME
+   ============================== */
+html[data-theme="dark"] {
+    color-scheme: dark;
+    --tp-ivory: #F3EEE3;
+    --tp-forest: #244532;
+    --tp-charcoal: #18231D;
+    --tp-burgundy: #B38A67;
+    --tp-gold: #D7B66D;
+    --tp-sage: #9FB29D;
+    --tp-paper: #24392C;
+    --tp-paper-deep: #1D3024;
+    --tp-ink: #F3EEE3;
+    --tp-muted: #C4CDBF;
+    --tp-line: rgba(232, 239, 226, .16);
+    --tp-shadow-soft: 0 12px 34px rgba(0, 0, 0, .20);
+    --tp-shadow-card: 0 22px 48px rgba(0, 0, 0, .28);
+    --tp-shadow-floating: 0 18px 50px rgba(0, 0, 0, .34);
+}
+
+html[data-theme="dark"],
+html[data-theme="dark"] body {
+    min-height: 100%;
+    background-color: #15251D !important;
+}
+
+html[data-theme="dark"] body {
+    color: #F3EEE3;
+    background-image:
+        radial-gradient(ellipse at 8% 5%, rgba(215, 182, 109, .095) 0, transparent 34rem),
+        radial-gradient(ellipse at 94% 17%, rgba(113, 151, 119, .14) 0, transparent 36rem),
+        radial-gradient(ellipse at 53% 100%, rgba(67, 105, 75, .12) 0, transparent 42rem),
+        linear-gradient(135deg, #14241C 0%, #1A3024 52%, #15271F 100%) !important;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+html[data-theme="dark"] #app,
+html[data-theme="dark"] main,
+html[data-theme="dark"] main > .container {
+    background: transparent !important;
+}
+
+/* Header, dropdown, mobile navigation and footer. */
+html[data-theme="dark"] .tp-navbar,
+html[data-theme="dark"] .tp-footer,
+html[data-theme="dark"] .tp-bottom-nav {
+    color: #F3EEE3;
+    background: rgba(27, 48, 36, .97) !important;
+    border-color: rgba(232, 221, 185, .16);
+}
+
+html[data-theme="dark"] .tp-mobile-panel,
+html[data-theme="dark"] .tp-dropdown-menu {
+    color: #F3EEE3;
+    background: #20372A !important;
+    border-color: rgba(232, 239, 226, .16);
+}
+
+html[data-theme="dark"] .tp-mobile-panel a,
+html[data-theme="dark"] .tp-dropdown-menu a {
+    color: #F3EEE3;
+}
+
+html[data-theme="dark"] .tp-mobile-panel a:hover,
+html[data-theme="dark"] .tp-dropdown-menu a:hover {
+    background: rgba(215, 182, 109, .12);
+}
+
+/* Main panels and cards use a slightly lighter green than the page background. */
+html[data-theme="dark"] .story-card,
+html[data-theme="dark"] .tp-panel,
+html[data-theme="dark"] .tp-social-bar,
+html[data-theme="dark"] .tp-progress-card,
+html[data-theme="dark"] .tp-history-row,
+html[data-theme="dark"] .tp-comment-card,
+html[data-theme="dark"] .tp-profile-stat,
+html[data-theme="dark"] .tp-profile-page .story-card,
+html[data-theme="dark"] .tp-profile-page .tp-profile-empty,
+html[data-theme="dark"] .tp-profile-page .tp-profile-drafts,
+html[data-theme="dark"] .tp-profile-draft-item,
+html[data-theme="dark"] .story-form,
+html[data-theme="dark"] .tp-editor-form,
+html[data-theme="dark"] .tp-auth-card,
+html[data-theme="dark"] .tp-profile-edit-form,
+html[data-theme="dark"] .tp-chapter-section,
+html[data-theme="dark"] .tp-character-section,
+html[data-theme="dark"] .tp-comments-section,
+html[data-theme="dark"] .tp-character-form-wrap,
+html[data-theme="dark"] .tp-reading-toolbar,
+html[data-theme="dark"] .tp-discovery-filters,
+html[data-theme="dark"] .search-form,
+html[data-theme="dark"] .empty-state,
+html[data-theme="dark"] .tp-pdf-upload-card,
+html[data-theme="dark"] .tp-pdf-document-card,
+html[data-theme="dark"] .tp-pdf-empty-state,
+html[data-theme="dark"] .tp-story-import-card,
+html[data-theme="dark"] .tp-story-import-guide {
+    color: #F3EEE3;
+    background: #23392B !important;
+    border-color: rgba(232, 239, 226, .15);
+}
+
+html[data-theme="dark"] .tp-profile-heading,
+html[data-theme="dark"] .reader-header {
+    color: #F3EEE3;
+    background: linear-gradient(125deg, #294333 0%, #20372A 100%) !important;
+    border-color: rgba(232, 239, 226, .16);
+}
+
+html[data-theme="dark"] .tp-profile-page .story-info,
+html[data-theme="dark"] .tp-profile-page .story-bottom,
+html[data-theme="dark"] .tp-chapter-row,
+html[data-theme="dark"] .tp-character-card {
+    color: #F3EEE3;
+    background: #1D3024 !important;
+    border-color: rgba(232, 239, 226, .14);
+}
+
+html[data-theme="dark"] input,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] select,
+html[data-theme="dark"] .story-form input:not([type="file"]),
+html[data-theme="dark"] .story-form select,
+html[data-theme="dark"] .story-form textarea,
+html[data-theme="dark"] .tp-editor-form input,
+html[data-theme="dark"] .tp-editor-form select,
+html[data-theme="dark"] .tp-editor-form textarea,
+html[data-theme="dark"] .tp-auth-form input,
+html[data-theme="dark"] .tp-profile-edit-form input:not([type="file"]),
+html[data-theme="dark"] .tp-profile-edit-form textarea,
+html[data-theme="dark"] .tp-character-form input:not([type="file"]),
+html[data-theme="dark"] .tp-character-form textarea,
+html[data-theme="dark"] .tp-comment-form textarea,
+html[data-theme="dark"] .tp-discovery-filters input,
+html[data-theme="dark"] .tp-discovery-filters select,
+html[data-theme="dark"] .search-form input,
+html[data-theme="dark"] .tp-reading-toolbar select,
+html[data-theme="dark"] .tp-chapter-tools input,
+html[data-theme="dark"] .tp-chapter-tools select,
+html[data-theme="dark"] .tp-story-import-form select {
+    color: #F3EEE3;
+    background-color: #192D22 !important;
+    border-color: rgba(232, 239, 226, .23);
+}
+
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder {
+    color: #B8C4B5;
+    opacity: 1;
+}
+
+/* Antique gold replaces the pink accent in the existing dark palette. */
+html[data-theme="dark"] .eyebrow,
+html[data-theme="dark"] .tp-eyebrow,
+html[data-theme="dark"] .genre,
+html[data-theme="dark"] .story-info .genre,
+html[data-theme="dark"] .reader-details > .genre,
+html[data-theme="dark"] .tp-pdf-eyebrow,
+html[data-theme="dark"] .story-bottom,
+html[data-theme="dark"] .story-info p a,
+html[data-theme="dark"] .reader-author a,
+html[data-theme="dark"] .tp-reader-owner-link a,
+html[data-theme="dark"] .tp-history-status a,
+html[data-theme="dark"] .tp-story-import-manual-option a,
+html[data-theme="dark"] .tp-pdf-back-link,
+html[data-theme="dark"] .tp-auth-switch a,
+html[data-theme="dark"] .tp-profile-draft-badge,
+html[data-theme="dark"] .tp-comment-meta strong,
+html[data-theme="dark"] .tp-chapter-row strong,
+html[data-theme="dark"] .tp-profile-stat-number,
+html[data-theme="dark"] .tp-profile-stat-number,
+html[data-theme="dark"] .tp-story-import-template,
+html[data-theme="dark"] .tp-story-import-template-note {
+    color: #E4C784;
+}
+
+html[data-theme="dark"] .tp-action-button,
+html[data-theme="dark"] .tp-text-button,
+html[data-theme="dark"] .tp-chapter-owner-actions a,
+html[data-theme="dark"] .tp-chapter-owner-actions button,
+html[data-theme="dark"] .tp-comment-delete,
+html[data-theme="dark"] .tp-character-delete,
+html[data-theme="dark"] .tp-password-toggle,
+html[data-theme="dark"] .tp-pdf-secondary-button,
+html[data-theme="dark"] .tp-pdf-delete-button {
+    color: #E4C784;
+    border-color: rgba(215, 182, 109, .42);
+}
+
+html[data-theme="dark"] .tp-action-button.is-active,
+html[data-theme="dark"] .tp-chapter-number {
+    color: #F3E4BC;
+    background: rgba(215, 182, 109, .15);
+}
+
+html[data-theme="dark"] .tp-story-import-example,
+html[data-theme="dark"] .tp-story-import-example pre {
+    color: #F3EEE3;
+    background: #192D22;
+    border-color: rgba(232, 239, 226, .16);
+}
+
+html[data-theme="dark"] .tp-empty-note,
+html[data-theme="dark"] .tp-no-characters {
+    color: #E3E8DC;
+    background: #2A4031;
+}
+
+/* ==============================
+   FLUID LAYOUT / LAPTOP FIT
+   ============================== */
+html {
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+body {
+    max-width: 100%;
+    min-width: 320px;
+}
+
+.container,
+.tp-container {
+    width: min(1320px, calc(100% - clamp(28px, 5vw, 72px)));
+    max-width: 100%;
+}
+
+.tp-navbar {
+    width: min(1320px, calc(100% - clamp(24px, 4vw, 56px)));
+    max-width: 100%;
+}
+
+.tp-reader-nav {
+    width: min(1320px, calc(100% - clamp(28px, 5vw, 72px)));
+    max-width: 100%;
+}
+
+main > .container,
+.tp-profile-page,
+.tp-feature-page,
+.tp-editor-page,
+.tp-reader-page {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.story-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+img,
+video,
+iframe,
+canvas {
+    max-width: 100%;
+}
+
+/* On medium laptop widths, move the full navigation into the menu panel
+   before the links begin to collide with the search field. */
+@media (min-width: 1101px) and (max-width: 1360px) {
+    .tp-navbar {
+        padding-inline: 18px;
+        gap: 16px;
+    }
+
+    .tp-navbar-inner {
+        gap: 16px;
+    }
+
+    .tp-nav-links,
+    .tp-nav-right {
+        gap: clamp(10px, 1.15vw, 16px);
+    }
+
+    .tp-nav-links > a,
+    .tp-dropdown-toggle,
+    .tp-nav-text {
+        font-size: .78rem;
+    }
+
+    .tp-search {
+        width: clamp(165px, 17vw, 210px);
+        flex: 0 1 210px;
+    }
+
+    .tp-nav-right .btn {
+        padding-inline: 14px;
+        font-size: .76rem;
+    }
+}
+
+@media (min-width: 721px) and (max-width: 1100px) {
+    .tp-navbar {
+        min-height: 68px;
+        padding-inline: 18px;
+    }
+
+    .tp-navbar-inner {
+        gap: 14px;
+    }
+
+    .tp-nav-links,
+    .tp-nav-right {
+        display: none !important;
+    }
+
+    .tp-search {
+        display: flex !important;
+        width: clamp(170px, 32vw, 300px);
+        margin-left: auto;
+    }
+
+    .tp-mobile-toggle {
+        display: grid !important;
+        margin-left: 0;
+        flex: 0 0 42px;
+    }
+
+    .tp-mobile-panel {
+        width: min(1320px, calc(100% - clamp(24px, 4vw, 56px)));
+    }
+}
+
+.tp-mobile-search {
+    display: none;
+}
+
+@media (max-width: 720px) {
+    .container,
+    .tp-container {
+        width: calc(100% - 32px);
+    }
+
+    .tp-navbar {
+        width: calc(100% - 24px);
+    }
+
+    .tp-mobile-search {
+        display: flex !important;
+        width: 100%;
+        min-height: 44px;
+        margin: 0 0 8px;
+        background: rgba(255, 255, 255, .07);
+        border-color: rgba(232, 239, 226, .18);
+    }
+
+    .tp-mobile-search input {
+        min-width: 0;
+        color: #F3EEE3;
+    }
+
+    .tp-mobile-search input::placeholder {
+        color: #B8C4B5;
+    }
+
+    .tp-mobile-search .tp-search-submit {
+        flex: 0 0 22px;
+    }
+
+    .tp-mobile-panel {
+        width: calc(100% - 24px);
+    }
+}
+
+@media (max-width: 390px) {
+    .tp-logo {
+        font-size: 1.35rem;
+    }
+
+    .tp-logo-mark {
+        width: 31px;
+        height: 31px;
+    }
+
+    .tp-mobile-panel {
+        padding: 9px;
+    }
+}
+
+@media (max-width: 768px) {
+    html[data-theme="dark"] body {
+        background-attachment: scroll;
+    }
+}
